@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevWari Studio — Dari Ide, Menjadi Solusi Digital</title>
+    <meta name="description" content="DevWari Studio, mitra teknologi dari Manokwari: pembuatan website, aplikasi mobile, SIAKAD, sistem pendataan gereja, dan IT support.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            dark: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Offset anchor agar tidak tertutup navbar sticky */
+        section[id] { scroll-margin-top: 5rem; }
+
+        .dot-pattern {
+    background-image: radial-gradient(#93c5fd 2px, transparent 2px);
+    background-size: 18px 18px;
+}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ========================================== -->
+    <!-- SVG SYMBOL: IKON TIFA (dipakai berulang)   -->
+    <!-- Jika ingin pakai gambar sendiri, ganti     -->
+    <!-- isi .tifa-divider dengan:                  -->
+    <!-- <img src="tifa.png" class="h-10" alt="">   -->
+    <!-- ========================================== -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol id="tifa-icon" viewBox="0 0 120 44">
+            <!-- Badan tifa -->
+            <path d="M12 8 C30 12 42 18 60 18 C78 18 90 12 108 8 L108 36 C90 32 78 26 60 26 C42 26 30 32 12 36 Z"
+                  fill="#7f1d1d" stroke="#111827" stroke-width="2" stroke-linejoin="round"/>
+            <!-- Ukiran oranye -->
+            <path d="M22 22 L30 17 L38 24 L46 18 L54 23 L60 21 L66 23 L74 18 L82 24 L90 17 L98 22"
+                  fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="60" cy="22" r="1.8" fill="#fde68a"/>
+            <circle cx="46" cy="22" r="1.2" fill="#fde68a"/>
+            <circle cx="74" cy="22" r="1.2" fill="#fde68a"/>
+            <!-- Kulit tifa (kedua ujung) -->
+            <ellipse cx="12" cy="22" rx="5" ry="14" fill="#1f2937" stroke="#111827" stroke-width="2"/>
+            <ellipse cx="108" cy="22" rx="5" ry="14" fill="#b91c1c" stroke="#111827" stroke-width="2"/>
+            <ellipse cx="108" cy="22" rx="2.2" ry="7" fill="#fca5a5" opacity=".55"/>
+        </symbol>
+    </svg>
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER / NAVBAR (STICKY)                -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="logo new.jpg"
+                     alt="DevWari Studio"
+                     class="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                <div>
+                    <span class="text-xl font-extrabold text-brand-900 tracking-tight block leading-none">DevWari</span>
+                    <span class="text-xs font-bold tracking-widest text-brand-600 uppercase">Studio</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600">
+                <a href="#about" class="hover:text-brand-600 transition-colors">Tentang Usaha</a>
+                <a href="#founder" class="hover:text-brand-600 transition-colors">Pendiri</a>
+                <a href="#team" class="hover:text-brand-600 transition-colors">Tim Kami</a>
+                <a href="#services" class="hover:text-brand-600 transition-colors">Layanan IT</a>
+                <a href="#portfolio" class="hover:text-brand-600 transition-colors">Portfolio</a>
+                <a href="#tech" class="hover:text-brand-600 transition-colors">Tech Stack</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <!-- CTA Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-800 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:scale-105 transition-all duration-300">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Diskusi Proyek</span>
+                </a>
+                <!-- Hamburger (Mobile) -->
+                <button id="menu-btn" type="button" aria-label="Buka menu"
+                        class="md:hidden w-11 h-11 rounded-lg border border-slate-200 bg-white text-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1 font-semibold text-sm text-slate-700">
+            <a href="#about" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Tentang Usaha</a>
+            <a href="#founder" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Pendiri</a>
+            <a href="#team" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Tim Kami</a>
+            <a href="#services" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Layanan IT</a>
+            <a href="#portfolio" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Portfolio</a>
+            <a href="#tech" class="block px-3 py-2.5 rounded-lg hover:bg-brand-50">Tech Stack</a>
+            <a href="#contact" class="block px-3 py-2.5 rounded-lg bg-brand-700 text-white text-center">Diskusi Proyek</a>
+        </nav>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION (background gambar)        -->
+    <!-- ========================================== -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+
+        <!-- Gambar background: ganti link di src dengan link gambarmu -->
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80"
+             alt=""
+             aria-hidden="true"
+             class="absolute inset-0 w-full h-full object-cover">
+
+        <!-- Overlay agar teks tetap terbaca (atur angka /90 /80 /70 untuk tebal tipisnya) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-slate-50/95" aria-hidden="true"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100/70 border border-brand-200 text-brand-700 font-bold text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-gem text-brand-600"></i> Startup Teknologi Papua Barat
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                        Dari Ide, Menjadi <span class="gradient-text">Solusi Digital.</span>
+                    </h1>
+                    <p class="text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        DevWari Studio adalah mitra teknologi dari Manokwari yang menghadirkan pengembangan website, aplikasi mobile, dan infrastruktur IT dengan memadukan kedaerahan serta inovasi teknologi modern.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-700/30 transition-all duration-300">
+                            <span>Jelajahi Layanan Kami</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-bold px-7 py-3.5 rounded-xl transition-all duration-300">
+                            <i class="fa-solid fa-laptop-code text-brand-600"></i>
+                            <span>Konsultasi Gratis</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column (Hero Banner Card) -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-gradient-to-br from-brand-900 to-brand-700 rounded-3xl p-8 text-white shadow-2xl shadow-brand-900/40 border border-brand-500/20">
+                        <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-cyan-300 border border-white/20">
+                            <i class="fa-solid fa-location-dot"></i> Manokwari, Papua Barat
+                        </div>
+                        <div class="w-30 h-30 sm:w-32 sm:h-32 bg-white/10 rounded-2xl flex items-center justify-center mt-6 mb-6 border border-white/20 overflow-hidden p-2">
+                            <img src="logo%20new.jpg"
+                                 alt="Logo DevWari Studio"
+                                 class="w-full h-full object-contain rounded-xl">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">DevWari Studio</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Membangun ekosistem teknologi lokal yang siap bersaing di era digital global.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                            <div>
+                                <span class="block text-2xl font-black text-cyan-400">100%</span>
+                                <span class="text-xs text-slate-300">Dedikasi Lokal</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-black text-cyan-400">Full-Stack</span>
+                                <span class="text-xs text-slate-300">Web &amp; Mobile App</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 3. TENTANG USAHA + MAKNA LOGO              -->
+    <!-- ========================================== -->
+    <section id="about" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Tentang Usaha</h2>
+                <p class="text-3xl font-extrabold text-slate-900">Makna di Balik Logo Kami</p>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Setiap elemen identitas DevWari Studio lahir dari budaya Papua dan semangat teknologi.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Burung Mambruk -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center text-brand-700 text-2xl mb-6">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Burung Mambruk</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Ikon khas Kabupaten Manokwari yang melambangkan keanggunan, kebijaksanaan, dan jati diri Manokwari dan tanah Papua tempat DevWari bertumbuh.
+                    </p>
+                </div>
+
+                <!-- Card 2: Tifa -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-700 text-2xl mb-6">
+                        <i class="fa-solid fa-drum"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Tifa (Tambur)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Alat musik tradisional Papua yang melambangkan kebersamaan dan cara kami berkomunikasi lewat karya digital.
+                    </p>
+                </div>
+
+                <!-- Card 3: Ikon Coding -->
+                <div class="glass-card p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-slate-800 text-2xl mb-6">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Ikon Coding (&lt;/&gt;)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Identitas kami sebagai kreator teknologi. Baris kode yang kami susun adalah kontribusi bagi kemajuan digital di Manokwari dan Tanah Papua.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. PENDIRI DEVWARI STUDIO (tema putih + biru ) -->
+    <!-- ========================================== -->
+    <section id="founder" class="py-20 bg-white text-slate-800 relative overflow-hidden border-y border-slate-200">
+
+        <!-- Dekorasi: lengkung biru + titik-titik (sama seperti footer) -->
+        <div class="absolute -top-28 -right-28 w-80 h-80 rounded-full bg-gradient-to-bl from-brand-700 to-brand-500" aria-hidden="true"></div>
+        <div class="absolute -top-36 -right-16 w-80 h-80 rounded-full bg-brand-500/20" aria-hidden="true"></div>
+        <div class="absolute bottom-10 left-4 w-24 h-24 dot-pattern opacity-40 hidden md:block" aria-hidden="true"></div>
+        <div class="absolute top-24 right-40 w-32 h-20 dot-pattern opacity-50 hidden md:block" aria-hidden="true"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Kolom Kiri: Foto & Identitas -->
+                <div class="lg:col-span-5 text-center">
+                    <div class="relative inline-block">
+                        <div class="w-72 sm:w-96 rounded-3xl bg-gradient-to-tr from-brand-700 to-cyan-400 p-1.5 shadow-2xl shadow-brand-700/25">
+                            <div class="bg-white rounded-[22px] overflow-hidden">
+                                <img src="Founder.png"
+                                     alt="Mike Deven Muid"
+                                     class="w-full h-80 sm:h-[26rem] object-cover object-top">
+                                <div class="p-5 text-center">
+                                    <h3 class="text-2xl font-black text-brand-900">Mike Deven Muid</h3>
+                                    <p class="text-brand-600 font-semibold text-sm mt-1">Founder &amp; Full-Stack Developer</p>
+                                    <span class="inline-block mt-3 px-3 py-1 bg-brand-50 rounded-full text-xs font-semibold text-brand-700 border border-brand-100">2023 — 2026 Journey</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Bio -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider">
+                        Pendiri DevWari Studio
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                        "Dari Ide, <span class="gradient-text">Menjadi Solusi Digital.</span>"
+                    </h2>
+                    <p class="text-slate-700 text-base leading-relaxed">
+                        DevWari Studio didirikan oleh Mike Deven Muid, praktisi IT dan Full-Stack Web/Mobile Developer dari Manokwari. Berbekal pengalaman membangun sistem informasi dari skala menengah hingga enterprise, seperti SIAKAD dan sistem pendataan gereja, ia mendirikan DevWari Studio untuk membangun ekosistem digital tanah Papua.
+                    </p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Melalui DevWari Studio, berbagai solusi digital seperti sistem informasi sekolah, website organisasi, dan layanan IT support dikembangkan untuk membantu sekolah, gereja, UMKM, serta instansi dalam memanfaatkan teknologi secara efektif.
+                    </p>
+
+                    <!-- Statistik -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-brand-50 p-5 rounded-2xl border border-brand-100 text-center">
+                            <span class="block text-3xl font-extrabold text-brand-700 mb-1">5+</span>
+                            <span class="text-xs font-medium text-slate-600">Project Sistem</span>
+                        </div>
+                        <div class="bg-brand-50 p-5 rounded-2xl border border-brand-100 text-center">
+                            <span class="block text-3xl font-extrabold text-emerald-500 mb-1">100%</span>
+                            <span class="text-xs font-medium text-slate-600">Komitmen Pelayanan</span>
+                        </div>
+                    </div>
+
+                    <!-- Keahlian -->
+                    <div class="space-y-3 pt-2">
+                        <span class="text-xs font-bold uppercase text-brand-600 block tracking-wider">Keahlian Utama Pendiri:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-lg text-xs font-semibold text-brand-800">Laravel / PHP</span>
+                            <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-lg text-xs font-semibold text-brand-800">Flutter / Dart</span>
+                            <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-lg text-xs font-semibold text-brand-800">Python Data Analysis</span>
+                            <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-lg text-xs font-semibold text-brand-800">MySQL &amp; Database Design</span>
+                            <span class="px-3 py-1.5 bg-brand-50 border border-brand-100 rounded-lg text-xs font-semibold text-brand-800">RESTful API Architecture</span>
+                        </div>
+                    </div>
+
+                    <!-- Sosial Media -->
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                        <a href="mailto:info@devwari.com" aria-label="Email" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-solid fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 5. TIM & SPESIALIS                         -->
+    <!-- ========================================== -->
+    <section id="team" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Struktur Kerja</h2>
+                <p class="text-3xl font-extrabold text-slate-900">Tim &amp; Spesialis Kami</p>
+                <p class="text-slate-600 text-sm">
+                    Kolaborasi talenta terbaik untuk menjamin setiap proyek dieksekusi secara profesional dan aman.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Team 1 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Lead Developer</h3>
+                    <p class="text-xs font-semibold text-brand-600 mb-3">System &amp; API Architecture</p>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Merancang arsitektur database, keamanan backend, dan integrasi sistem utama.
+                    </p>
+                </div>
+
+                <!-- Team 2 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-700 text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Mobile Specialist</h3>
+                    <p class="text-xs font-semibold text-cyan-600 mb-3">Flutter Cross-Platform</p>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Mengembangkan aplikasi mobile Android/iOS dengan dukungan mode offline.
+                    </p>
+                </div>
+
+                <!-- Team 3 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-700 text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">UI/UX Designer</h3>
+                    <p class="text-xs font-semibold text-indigo-600 mb-3">Interface &amp; Layout</p>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Mendesain tampilan web modern yang ramah pengguna, responsif, dan elegan.
+                    </p>
+                </div>
+
+                <!-- Team 4 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">IT Infrastructure</h3>
+                    <p class="text-xs font-semibold text-emerald-600 mb-3">Hardware &amp; Support</p>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Penanganan instalasi perangkat keras, jaringan komputer, dan pemeliharaan rutin.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 6. LAYANAN IT                              -->
+    <!-- ========================================== -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Layanan Komprehensif</h2>
+                <p class="text-3xl font-extrabold text-slate-900">Solusi Layanan IT Kami</p>
+                <p class="text-slate-600 text-sm">
+                    Membantu UMKM, Gereja, Sekolah, Perusahaan, dan Organisasi dalam memanfaatkan teknologi secara efektif.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Pembuatan Website</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Website profil usaha, landing page responsif, portal berita, hingga sistem e-commerce.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 text-xl mb-6">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Aplikasi Mobile Custom</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Aplikasi Android/iOS berbasis Flutter dengan performa tinggi dan fitur offline-first.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-xl mb-6">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Sistem Informasi Sekolah (SIAKAD)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Modul nilai siswa, pembayaran Virtual Account, absensi tap card, dan notifikasi WhatsApp.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-xl mb-6">
+                        <i class="fa-solid fa-church"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Sistem Pendataan Gereja</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Pendataan jemaat tingkat Majelis/Klasis dengan pemetaan lokasi gereja terintegrasi.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 text-xl mb-6">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Hardware &amp; Network Maintenance</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Instalasi sistem komputer lab/kantor, perawatan hardware, dan pemeliharaan perangkat.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="p-8 rounded-2xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 text-xl mb-6">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Desain Grafis Digital</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Pembuatan aset branding, logo perusahaan, brosur digital, dan materi promosi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    
+<!-- ========================================== -->
+<!-- PORTFOLIO / PERJALANAN PROJECT             -->
+<!-- ========================================== -->
+<section id="portfolio" class="py-20 bg-slate-50 relative overflow-hidden">
+    <div class="absolute top-10 left-6 w-32 h-32 dot-pattern opacity-40" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Judul -->
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Portfolio</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                Perjalanan Membangun <span class="gradient-text">Solusi Digital</span>
+            </p>
+            <p class="text-slate-600 text-sm">Developer Journey • 2023 — 2026</p>
+        </div>
+
+        <!-- Timeline chips -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-12 text-xs font-bold text-white">
+            <span class="px-4 py-1.5 rounded-full bg-brand-700">2023</span>
+            <i class="fa-solid fa-chevron-right text-brand-700"></i>
+            <span class="px-4 py-1.5 rounded-full bg-brand-700">2024</span>
+            <i class="fa-solid fa-chevron-right text-brand-700"></i>
+            <span class="px-4 py-1.5 rounded-full bg-brand-700">2024–2025</span>
+            <i class="fa-solid fa-chevron-right text-brand-700"></i>
+            <span class="px-4 py-1.5 rounded-full bg-brand-700">2025–2026</span>
+            <i class="fa-solid fa-chevron-right text-brand-700"></i>
+            <span class="px-4 py-1.5 rounded-full bg-brand-500">Sekarang</span>
+        </div>
+
+        <!-- Kartu project -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Project 1: 2023 -->
+            <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <span class="self-start px-4 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">2023</span>
+                <!-- Ganti blok ikon ini dengan screenshot: <img src="project-menu.png" alt="Sistem Pemesanan Menu" class="w-full h-36 object-cover rounded-xl my-4"> -->
+                <div class="w-full h-36 my-4 rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center text-5xl text-brand-600">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-sm uppercase leading-snug">Sistem Pemesanan Menu Berbasis Web</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mt-2">Sistem pemesanan menu berbasis web dengan proses pemesanan hingga checkout.</p>
+                <p class="text-xs font-bold text-slate-900 mt-4 mb-2">Fitur:</p>
+                <ul class="space-y-1.5 text-xs text-slate-600 flex-1">
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Halaman Utama</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Login</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Daftar Menu</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Harga &amp; Deskripsi</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Keranjang</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Checkout</li>
+                </ul>
+                <div class="mt-4 px-3 py-2 rounded-lg bg-brand-50 text-brand-700 text-[11px] font-semibold">
+                    <i class="fa-solid fa-circle-info mr-1"></i> Belum terintegrasi Payment Gateway
+                </div>
+            </article>
+
+            <!-- Project 2: 2024 -->
+            <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <span class="self-start px-4 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">2024</span>
+                <div class="w-full h-36 my-4 rounded-xl bg-gradient-to-br from-cyan-50 to-brand-100 flex items-center justify-center text-5xl text-cyan-600">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-sm uppercase leading-snug">Sistem Pemesanan &amp; Pengecekan Kamar Asrama</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mt-2">Sistem untuk mengecek ketersediaan kamar, melakukan pemesanan, dan proses persetujuan.</p>
+                <p class="text-xs font-bold text-slate-900 mt-4 mb-2">Fitur:</p>
+                <ul class="space-y-1.5 text-xs text-slate-600 flex-1">
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Pengecekan Kamar Kosong</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Pemesanan Kamar</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Persetujuan Booking</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Verifikasi NIK</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Verifikasi Wilayah</li>
+                </ul>
+                <div class="mt-4 px-3 py-2 rounded-lg bg-brand-700 text-white text-[11px] font-bold uppercase tracking-wide">
+                    <i class="fa-solid fa-code mr-1"></i> Binary Search Algorithm
+                </div>
+            </article>
+
+            <!-- Project 3: 2024-2025 -->
+            <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <span class="self-start px-4 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">2024–2025</span>
+                <div class="w-full h-36 my-4 rounded-xl bg-gradient-to-br from-indigo-50 to-brand-100 flex items-center justify-center text-5xl text-indigo-600">
+                    <i class="fa-solid fa-church"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-sm uppercase leading-snug">Sistem Pendataan Jemaat GPKAI</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mt-2">Sistem pendataan jemaat tingkat Klasis/Majelis Daerah dalam naungan GPKAI.</p>
+                <p class="text-xs font-bold text-slate-900 mt-4 mb-2">Fitur:</p>
+                <ul class="space-y-1.5 text-xs text-slate-600 flex-1">
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Pendataan Jemaat</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Data Gereja</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Berita</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Informasi Gereja</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Alamat Gereja</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Maps &amp; Lokasi</li>
+                </ul>
+            </article>
+
+            <!-- Project 4: 2025-2026 -->
+            <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <span class="self-start px-4 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">2025–2026</span>
+                <div class="w-full h-36 my-4 rounded-xl bg-gradient-to-br from-emerald-50 to-brand-100 flex items-center justify-center text-5xl text-emerald-600">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-sm uppercase leading-snug">Sistem Informasi Akademik — SIAKAD</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mt-2">Sistem informasi akademik berbasis web untuk mendukung kebutuhan sekolah.</p>
+                <p class="text-xs font-bold text-slate-900 mt-4 mb-2">Fitur:</p>
+                <ul class="space-y-1.5 text-xs text-slate-600 flex-1">
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Data &amp; Nilai Siswa</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Pembayaran Virtual Account</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Absensi Tap Card</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Notifikasi WhatsApp Orang Tua</li>
+                    <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Informasi Akademik</li>
+                </ul>
+            </article>
+        </div>
+
+        <!-- Baris bawah: Aplikasi Mobile + Project Saat Ini -->
+        <div class="grid lg:grid-cols-12 gap-6 mt-6">
+
+            <!-- Aplikasi Mobile -->
+            <article class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex gap-5 items-start">
+                <div class="w-14 h-14 shrink-0 rounded-full bg-brand-700 text-white flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-brand-600">Aplikasi Mobile</span>
+                    <h3 class="font-extrabold text-slate-900 text-base uppercase leading-snug mt-1">Aplikasi Nyanyian Bahasa Daerah</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed mt-2">Aplikasi mobile offline untuk lagu rohani berbahasa daerah.</p>
+                    <ul class="grid grid-cols-2 gap-1.5 text-xs text-slate-600 mt-3">
+                        <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Mobile Application</li>
+                        <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Mode Offline</li>
+                        <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Lagu Rohani</li>
+                        <li><i class="fa-solid fa-circle-check text-brand-600 mr-2"></i>Bahasa Daerah</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Project Saat Ini -->
+            <article class="lg:col-span-7 bg-gradient-to-br from-brand-700 to-brand-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-white/5" aria-hidden="true"></div>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-brand-700 text-[11px] font-bold uppercase tracking-wide">
+                    <i class="fa-solid fa-circle text-[8px] text-emerald-500"></i> Current Project
+                </span>
+                <p class="text-xs font-semibold text-blue-200 mt-4 uppercase tracking-wide">Project Saat Ini</p>
+                <h3 class="text-xl sm:text-2xl font-extrabold uppercase leading-snug mt-1">Sistem Pendataan Gereja GPKAI</h3>
+                <span class="inline-flex items-center gap-2 mt-4 px-4 py-1.5 rounded-full border border-white/40 text-xs font-bold uppercase tracking-wide">
+                    <i class="fa-solid fa-gear fa-spin"></i> Sedang Dikembangkan
+                </span>
+                <p class="text-blue-100 text-sm leading-relaxed mt-4 max-w-lg">
+                    Pengembangan sistem data gereja, jemaat, wilayah, dan informasi terintegrasi.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4 text-[11px] font-semibold">
+                    <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/20">Data Gereja</span>
+                    <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/20">Data Jemaat</span>
+                    <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/20">Peta Lokasi</span>
+                    <span class="px-3 py-1 rounded-lg bg-white/10 border border-white/20">Dashboard</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 7. TECH STACK (tema putih + biru) -->
+    <!-- ========================================== -->
+    <section id="tech" class="py-16 bg-white text-slate-800 relative overflow-hidden border-y border-slate-200">
+
+        <!-- Dekorasi: lengkung biru + titik-titik (sama seperti footer) -->
+        <div class="absolute -bottom-28 -left-28 w-80 h-80 rounded-full bg-gradient-to-tr from-brand-700 to-brand-500" aria-hidden="true"></div>
+        <div class="absolute -bottom-36 -left-16 w-80 h-80 rounded-full bg-brand-500/20" aria-hidden="true"></div>
+        <div class="absolute top-10 right-6 w-32 h-20 dot-pattern opacity-50 hidden md:block" aria-hidden="true"></div>
+        <div class="absolute bottom-10 right-40 w-24 h-24 dot-pattern opacity-40 hidden md:block" aria-hidden="true"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Ekosistem Teknologi</h2>
+            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-10">
+                Teknologi &amp; Tools <span class="gradient-text">Yang Kami Gunakan</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-brands fa-laravel text-red-500 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">Laravel</span>
+                </div>
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-solid fa-mobile text-cyan-500 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">Flutter &amp; Dart</span>
+                </div>
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-brands fa-python text-yellow-500 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">Python</span>
+                </div>
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-brands fa-css3-alt text-blue-500 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">Tailwind CSS</span>
+                </div>
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-solid fa-database text-amber-500 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">MySQL</span>
+                </div>
+                <div class="px-5 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-brand-500 transition-all duration-300 flex items-center gap-3">
+                    <i class="fa-brands fa-docker text-blue-600 text-xl"></i>
+                    <span class="text-sm font-semibold text-slate-800">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 8. KONTAK & CALL TO ACTION                 -->
+    <!-- ========================================== -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-white to-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+
+                    <div class="lg:col-span-7 space-y-4">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold">Siap Membangun Solusi Digital Bersama Kami?</h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Hubungi DevWari Studio hari ini untuk diskusi kebutuhan sistem, pembuatan website, aplikasi, atau perawatan hardware IT Anda.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <!-- Ganti 62812XXXXXXXX dengan nomor WhatsApp asli (format 62, tanpa +/0 di depan) -->
+                            <a href="https://wa.me/62812XXXXXXXX" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all duration-300">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Hubungi WhatsApp</span>
+                            </a>
+                            <a href="mailto:info@devwari.com" class="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3.5 rounded-xl transition-all duration-300">
+                                <i class="fa-solid fa-envelope text-xl"></i>
+                                <span>Kirim Email</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4">
+                        <h4 class="font-bold text-lg border-b border-white/10 pb-2">Informasi Kontak</h4>
+                        <div class="flex items-start gap-3 text-sm text-slate-200">
+                            <i class="fa-solid fa-location-dot mt-1 text-cyan-400"></i>
+                            <span>Manokwari, Papua Barat, Indonesia</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-200">
+                            <i class="fa-solid fa-clock text-cyan-400"></i>
+                            <span>Senin - Sabtu (08:00 - 17:00 WIT)</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-200">
+                            <i class="fa-solid fa-globe text-cyan-400"></i>
+                            <span>www.devwari.com</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PEMBATAS TIFA ===== -->
+    <div class="bg-slate-50 py-8" aria-hidden="true">
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-4">
+            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-slate-300"></span>
+            <img src="Tifa.png"
+                 alt=""
+                 class="h-10 w-auto object-contain drop-shadow-md">
+            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-slate-300"></span>
+        </div>
+    </div>
+
+<!-- ========================================== -->
+<!-- FOOTER (tema infografik: putih + biru)     -->
+<!-- ========================================== -->
+<footer class="relative bg-white overflow-hidden border-t border-slate-200">
+
+    <!-- Dekorasi: lengkung biru pojok kanan bawah + titik-titik -->
+    <div class="absolute -bottom-28 -right-28 w-80 h-80 rounded-full bg-gradient-to-tr from-brand-700 to-brand-500" aria-hidden="true"></div>
+    <div class="absolute -bottom-36 -right-16 w-80 h-80 rounded-full bg-brand-500/20" aria-hidden="true"></div>
+    <div class="absolute bottom-10 right-40 w-32 h-20 dot-pattern opacity-50 hidden md:block" aria-hidden="true"></div>
+    <div class="absolute top-20 left-4 w-24 h-24 dot-pattern opacity-40 hidden md:block" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
+
+        <!-- Banner: Kenali Perjalanan DevWari Studio -->
+        <a href="#portfolio" class="block rounded-3xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 p-6 sm:p-8 shadow-xl shadow-brand-700/20 hover:shadow-brand-700/40 transition-shadow duration-300">
+            <div class="grid lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-5 flex items-center gap-4 text-white">
+                    <div class="w-14 h-14 shrink-0 rounded-full bg-white/15 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-bold uppercase tracking-wider text-blue-100">Kenali Perjalanan</p>
+                        <p class="text-2xl font-extrabold uppercase leading-tight">DevWari Studio</p>
+                    </div>
+                    <span class="w-11 h-11 shrink-0 rounded-full bg-white text-brand-700 flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Mini timeline -->
+                <div class="lg:col-span-7 grid grid-cols-5 gap-2 text-center text-white">
+                    <div>
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-white/15 flex items-center justify-center"><i class="fa-solid fa-laptop"></i></div>
+                        <p class="text-xs font-extrabold mt-2">2023</p>
+                        <p class="text-[10px] text-blue-100 leading-tight">Project Pertama</p>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-white/15 flex items-center justify-center"><i class="fa-solid fa-database"></i></div>
+                        <p class="text-xs font-extrabold mt-2">2024</p>
+                        <p class="text-[10px] text-blue-100 leading-tight">Sistem Lebih Kompleks</p>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-white/15 flex items-center justify-center"><i class="fa-solid fa-church"></i></div>
+                        <p class="text-xs font-extrabold mt-2">2024–2025</p>
+                        <p class="text-[10px] text-blue-100 leading-tight">Integrasi Data &amp; Multi Fitur</p>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-white/15 flex items-center justify-center"><i class="fa-solid fa-cloud"></i></div>
+                        <p class="text-xs font-extrabold mt-2">2025–2026</p>
+                        <p class="text-[10px] text-blue-100 leading-tight">Sistem Skala Besar</p>
+                    </div>
+                    <div>
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-white/15 flex items-center justify-center"><i class="fa-solid fa-earth-asia"></i></div>
+                        <p class="text-xs font-extrabold mt-2">Sekarang</p>
+                        <p class="text-[10px] text-blue-100 leading-tight">Dampak Lebih Luas</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Brand + tagline (seperti bagian bawah infografik) -->
+        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 mt-12">
+            <a href="#" class="flex items-center gap-3">
+                 <img src="logo new.jpg" alt="DevWari Studio" class="h-14 w-auto">
+                <div>
+                    <span class="text-2xl font-extrabold text-brand-900 tracking-tight block leading-none">DevWari</span>
+                    <span class="text-xs font-bold tracking-[0.35em] text-brand-600 uppercase">Studio</span>
+                </div>
+            </a>
+            <span class="hidden sm:block w-px h-12 bg-slate-300"></span>
+            <p class="text-slate-700 italic text-sm sm:text-base text-center sm:text-left">Dari Ide, Menjadi Solusi Digital.</p>
+        </div>
+
+        <!-- Kolom link -->
+        <div class="grid md:grid-cols-12 gap-10 mt-10 pb-10 border-b border-slate-200">
+
+            <div class="md:col-span-5">
+                <p class="text-slate-600 text-sm leading-relaxed max-w-sm">
+                    Partner transformasi digital terpercaya dari Manokwari untuk Indonesia. Website, aplikasi mobile, SIAKAD, sistem pendataan, dan IT support.
+                </p>
+                <div class="flex items-center gap-3 mt-5">
+                    <a href="https://www.instagram.com/dev_wari_studio" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                    <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+                    <a href="mailto:devwaristudio@gmail.com" aria-label="Email" class="w-10 h-10 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center hover:bg-brand-700 hover:text-white transition-all"><i class="fa-solid fa-envelope text-lg"></i></a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-bold text-brand-600 uppercase tracking-wider mb-4">Layanan</h4>
+                <ul class="space-y-2.5 text-sm text-slate-700">
+                    <li><a href="#services" class="hover:text-brand-600 transition-colors">Web Development</a></li>
+                    <li><a href="#services" class="hover:text-brand-600 transition-colors">SIAKAD (Sistem Sekolah)</a></li>
+                    <li><a href="#services" class="hover:text-brand-600 transition-colors">Sistem Pendataan Gereja</a></li>
+                    <li><a href="#services" class="hover:text-brand-600 transition-colors">IT Maintenance</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4">
+                <h4 class="text-xs font-bold text-brand-600 uppercase tracking-wider mb-4">Kontak</h4>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="flex items-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-brand-600 text-base"></i>
+                        <span>+62 812 XXXX XXXX Info Lebih Lanjut Silahkan Dm VIA EMAIL</span> 
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-brand-600 text-base"></i>
+                        <span>devwaristudio@gmail.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-location-dot text-brand-600 text-base"></i>
+                        <span>Manokwari, Papua Barat, Indonesia</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="pt-6 text-center md:text-left text-xs text-slate-500 md:max-w-[60%]">
+            &copy; 2026 Dev Wari Studio. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+    <!-- Script: toggle menu mobile -->
+    <script>
+        (function () {
+            var btn = document.getElementById('menu-btn');
+            var menu = document.getElementById('mobile-menu');
+            if (!btn || !menu) return;
+            btn.addEventListener('click', function () {
+                menu.classList.toggle('hidden');
+            });
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    menu.classList.add('hidden');
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
